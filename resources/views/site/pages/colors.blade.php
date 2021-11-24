@@ -11,13 +11,13 @@
               <table class="table table-hover table-bordered" id="sampleTable">
                           <thead>
                               <tr>
-                                <th> Description </th>
+                                <th> Name/Description </th>
                               </tr>
                           </thead>
                           <tbody>
                   @forelse ($colors as $color)
                       <tr>
-                          <td><a href="{{ route('site.color-states', $color->id) }}" >{{$color->name}}</a></td>
+                          <td><a href="{{ route('site.color-states', $color->color_id) }}" >{{$color->color->name}}</a></td>
                       </tr>
                   @empty
                   <div>

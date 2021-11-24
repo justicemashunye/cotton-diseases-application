@@ -13,18 +13,13 @@ class ColorStateController extends BaseController
      */
     protected $colorstateRepository;
 
-    /**
-     * CategoryController constructor.
-     * @param ColorStateContract $colorstateRepository
-     */
+ 
     public function __construct(ColorStateContract $colorstateRepository)
     {
         $this->colorstateRepository = $colorstateRepository;
     }
 
-        /**
-     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
-     */
+    
     public function index()
     {
         $colorstates = $this->colorstateRepository->listColorStates();
@@ -63,10 +58,7 @@ class ColorStateController extends BaseController
         }
         return $this->responseRedirect('admin.colorstates.index', 'ColorState added successfully' ,'success',false, false);
     }
-        /**
-     * @param $id
-     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
-     */
+
     public function edit($id)
     {
         $colorstate = $this->colorstateRepository->findColorStateById($id);
@@ -75,11 +67,6 @@ class ColorStateController extends BaseController
         return view('admin.colorstates.edit', compact('colorstate'));
     }
 
-        /**
-     * @param Request $request
-     * @return \Illuminate\Http\RedirectResponse
-     * @throws \Illuminate\Validation\ValidationException
-     */
     public function update(Request $request)
     {
         $this->validate($request, [

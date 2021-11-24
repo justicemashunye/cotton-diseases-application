@@ -15,6 +15,9 @@ use App\Contracts\ColorStateContract;
 use App\Repositories\ColorStateRepository;
 use App\Contracts\DiseaseContract;
 use App\Repositories\DiseaseRepository;
+use App\Contracts\DiseaseDetailContract;
+use App\Repositories\DiseaseDetailRepository;
+
 
 
 class RepositoryServiceProvider extends ServiceProvider
@@ -26,13 +29,10 @@ class RepositoryServiceProvider extends ServiceProvider
         ColorContract::class            =>          ColorRepository::class,
         ColorStateContract::class            =>          ColorStateRepository::class,
         DiseaseContract::class            =>          DiseaseRepository::class,
+        DiseaseDetailContract::class            =>          DiseaseDetailRepository::class,
     ];
 
-    /**
-     * Register services.
-     *
-     * @return void
-     */
+  
     public function register()
     {
         foreach ($this->repositories as $interface => $implementation)

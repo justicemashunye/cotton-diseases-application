@@ -19,7 +19,7 @@
                                 <div class="icon-wrap icon-xs bg2 round text-secondary"><i
                                         class="fa fa-shopping-cart"></i></div>
                                 <div class="text-wrap">
-                                    <small>small</small>
+                                   
                                 </div>
                             </a>
                     </div>
@@ -27,13 +27,13 @@
                             <div class="widget-header">
                                 <a href="{{ route('login') }}" class="ml-3 icontext">
                                     <div class="icon-wrap icon-xs bg-primary round text-white"><i class="fa fa-user"></i></div>
-                                    <div class="text-wrap"><span> Customer/Farmer Login</span></div>
+                                    <div class="text-wrap"><span> Farmer Login</span></div>
                                 </a>
                             </div>
                             <div class="widget-header">
                                 <a href="{{ route('register') }}" class="ml-3 icontext">
                                     <div class="icon-wrap icon-xs bg-success round text-white"><i class="fa fa-user"></i></div>
-                                    <div class="text-wrap"><span>Customer/Farmer Register</span></div>
+                                    <div class="text-wrap"><span>Farmer Register</span></div>
                                 </a>
                             </div>
                         @else

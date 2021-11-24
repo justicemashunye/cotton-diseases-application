@@ -20,12 +20,13 @@
                                 <th> Name </th>
                                 <th class="text-center"> Featured </th>
                                 <th class="text-center"> Menu </th>
+                                <th class="text-center"> Image </th>
                                 <th style="width:100px; min-width:100px;" class="text-center text-danger"><i class="fa fa-bolt"> </i></th>
                             </tr>
                         </thead>
                         <tbody>
                             @foreach($stages as $stage)
-                                @if ($stage->id != 1)
+                                @if ($stage->id != 0)
                                     <tr>
                                         <td>{{ $stage->id }}</td>
                                         <td>{{ $stage->name }}</td>
@@ -43,6 +44,7 @@
                                                 <span class="badge badge-danger">No</span>
                                             @endif
                                         </td>
+                                        <td><img class="rounded" src="{{ asset('storage/'.$stage->image) }}" alt="{{<?php echo $stage->name;?>}}" style="width: 150px; height: auto;" ></td>
                                         <td class="text-center">
                                             <div class="btn-group" role="group" aria-label="Second group">
                                                 <a href="{{ route('admin.stages.edit', $stage->id) }}" class="btn btn-sm btn-primary"><i class="fa fa-edit"></i></a>

@@ -1,6 +1,7 @@
 <?php
 
 namespace App;
+use App\Disease;
 
 use Illuminate\Database\Eloquent\Model;
 
@@ -13,8 +14,8 @@ class ColorState extends Model
         'description','image'
     ];
 
-    public function colors()
+    public function diseases()
     {
-        return $this->belongsToMany('App\Color');
+        return $this->hasMany(Disease::class);
     }
 }

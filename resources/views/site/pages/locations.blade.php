@@ -12,15 +12,17 @@
                           <thead>
                               <tr>
                                 <th> Location </th>
+                                <th>Similar Image </th>
                                 <tbody>
-                                @forelse ($locations as $location)
+                              @forelse ($locations as $location)
                               <tr>
                                 <td><a href="{{ route('site.shapes', $location->location_id) }}" >{{$location->location->name}}</a></td>
+                                <td><a href="{{route('site.shapes', $location->location_id)}}" ><img class="rounded" src="{{ asset('storage/'.$location->location->image) }}" alt="{{<?php echo $location->location->name;?>}}" style="width: 200px; height: auto;" ></a>
                               @empty
                               <div>
-                                  <p>You have no stages yet</p>
+                                  <p>Couldnt find anything from the search</p>
                               </div>
-                          @endforelse
+                              @endforelse
                               </tr>
                           <tbody>
                           </tbody>

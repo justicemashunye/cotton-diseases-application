@@ -5,26 +5,47 @@ namespace App\Http\Controllers\Admin;
 use Illuminate\Http\Request;
 use App\Contracts\DiseaseContract;
 use App\Http\Controllers\BaseController;
+use App\Contracts\DiseaseDetailContract;
+use App\Contracts\StageContract;
+use App\Contracts\LocationContract;
+use App\Contracts\ShapeContract;
+use App\Contracts\ColorStateContract;
+use App\Contracts\ColorContract;
+
+
 
 class DiseaseController extends BaseController
 {
-    /**
-     * @var DiseaseContract
-     */
+    
     protected $diseaseRepository;
+    protected $diseasedetailRepository;
+    protected $stageRepository;
+    protected $shapeRepository;
+    protected $locationRepository;
+    protected $colorstateRepository;
+    protected $colorRepository;
 
-    /**
-     * CategoryController constructor.
-     * @param DiseaseContract $diseaseRepository
-     */
-    public function __construct(DiseaseContract $diseaseRepository)
+
+  
+    public function __construct(DiseaseContract $diseaseRepository,
+    DiseaseDetailContract $diseasedetailRepository,
+    StageContract $stageRepository,
+    ShapeContract $shapeRepository,
+    LocationContract $locationRepository,
+    ColorStateContract $colorstateRepository,
+    ColorContract $colorRepository
+    )
     {
         $this->diseaseRepository = $diseaseRepository;
+        $this->diseasedetailRepository = $diseasedetailRepository;
+        $this->stageRepository = $stageRepository;
+        $this->shapeRepository = $shapeRepository;
+        $this->locationRepository = $locationRepository;
+        $this->colorstateRepository = $colorstateRepository;
+        $this->colorRepository = $colorRepository;
     }
 
-        /**
-     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
-     */
+        
     public function index()
     {
         $diseases = $this->diseaseRepository->listDiseases();
@@ -33,25 +54,32 @@ class DiseaseController extends BaseController
         return view('admin.diseases.index', compact('diseases'));
     }
 
-        /**
-     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
-     */
+        
     public function create()
     {
+        
+        $stages = $this->stageRepository->listStages('name', 'asc');
+        $diseasedetails = $this->diseasedetailRepository->listDiseaseDetails('name', 'asc');
+        $shapes = $this->shapeRepository->listShapes('description', 'asc');
+        $locations = $this->locationRepository->listLocations('name', 'asc');
+        $colors = $this->colorRepository->listColors('name', 'asc');
+        $colorstates = $this->colorstateRepository->listColorstates('description', 'asc');
+
         $this->setPageTitle('Diseases', 'Create Disease');
-        return view('admin.diseases.create');
+        return view('admin.diseases.create', compact('stages', 'diseasedetails','locations','shapes','colors','colorstates'));
+        
     }
 
-        /**
-     * @param Request $request
-     * @return \Illuminate\Http\RedirectResponse
-     * @throws \Illuminate\Validation\ValidationException
-     */
+        
     public function store(Request $request)
     {
         $this->validate($request, [
-            'name'      =>  'required|max:191'
-
+            'disease_detail_id'     =>  'required',
+            'stage_id'      =>  'required',
+            'location_id'      =>  'required',
+            'shape_id'      =>  'required',
+            'color_id'      =>  'required',
+            'color_state_id'   =>  'required'
         ]);
 
         $params = $request->except('_token');
@@ -59,27 +87,26 @@ class DiseaseController extends BaseController
         $disease = $this->diseaseRepository->createDisease($params);
 
         if (!$disease) {
-            return $this->responseRedirectBack('Error occurred while creating disease.', 'error', true, true);
+            //return $this->responseRedirectBack('Error occurred while creating disease.', 'error', true, true);
+            return $this->responseRedirect('Error occurred while creating disease.', 'error', true, true);
         }
-        return $this->responseRedirect('admin.diseases.index', 'Disease added successfully' ,'success',false, false);
+        return $this->responseRedirect('admin.disease.index', 'Disease added successfully' ,'success',false, false);
     }
-        /**
-     * @param $id
-     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
-     */
+        
     public function edit($id)
     {
+        $stages = $this->stageyRepository->listStages('name', 'asc');
+        $diseasedetails = $this->diseasedetailRepository->listDiseaseDetails('name', 'asc');
+        $locations = $this->locationRepository->listLocations('name', 'asc');
+        $shapes = $this->shapeRepository->listShapes('name', 'asc');
+        
         $disease = $this->diseaseRepository->findDiseaseById($id);
 
         $this->setPageTitle('Diseases', 'Edit Disease : '.$disease->name);
-        return view('admin.diseases.edit', compact('disease'));
+        return view('admin.diseases.edit', compact('disease','diseasedetails','stages','locations','shapes'));
     }
 
-        /**
-     * @param Request $request
-     * @return \Illuminate\Http\RedirectResponse
-     * @throws \Illuminate\Validation\ValidationException
-     */
+     
     public function update(Request $request)
     {
         $this->validate($request, [
@@ -96,10 +123,7 @@ class DiseaseController extends BaseController
         return $this->responseRedirectBack('Disease updated successfully' ,'success',false, false);
     }
 
-        /**
-     * @param $id
-     * @return \Illuminate\Http\RedirectResponse
-     */
+        
     public function delete($id)
     {
         $disease = $this->diseaseRepository->deleteDisease($id);

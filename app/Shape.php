@@ -2,7 +2,9 @@
 
 namespace App;
 
+
 use Illuminate\Database\Eloquent\Model;
+use App\Disease;
 
 class Shape extends Model
 {
@@ -14,14 +16,10 @@ class Shape extends Model
         'description','image'
     ];
 
-    public function locations()
+    
+    public function diseases()
     {
-        return $this->belongsToMany('App\Location');
-    }
-
-    public function colors()
-    {
-        return $this->belongsToMany('App\Color');
+        return $this->hasMany(Disease::class);
     }
 
 }

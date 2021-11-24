@@ -12,12 +12,7 @@ class Location extends Model
     protected $fillable = [
         'name','description','image','stage_id'
     ];
-    /*
-    public function stages()
-    {
-        return $this->belongsToMany('App\Stage');
-    }
-    */
+   
 
     protected $casts = [
         'stage_id'  =>  'integer',

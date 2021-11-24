@@ -5,7 +5,7 @@
             <div class="row">
             <!--
                 <aside class="col-sm-3 col-md-3 white">
-                    <h5 class="title">Customer Services</h5>
+                    <h5 class="title">Farmer Services</h5>
                     <ul class="list-unstyled">
                         <li> <a href="#">Help center</a></li>
                         <li> <a href="#">Money refund</a></li>
@@ -15,11 +15,10 @@
                 </aside>
                 -->
                 <aside class="col-sm-3  col-md-3 white">
-                    <h5 class="title">Customer Account</h5>
+                    <h5 class="title">Farmer Account</h5>
                     <ul class="list-unstyled">
-                        <li> <a href="{{ route('login') }}"> Customer Login </a></li>
-                        <li> <a href="{{ route('register') }}"> Customer  register </a></li>
-                        <li> <a href="#"> My Orders </a></li>
+                        <li> <a href="{{ route('login') }}"> Farmer Login </a></li>
+                        <li> <a href="{{ route('register') }}"> Farmer  register </a></li>
                     </ul>
                 </aside>
                 <aside class="col-sm-3  col-md-3 white">
@@ -27,20 +26,19 @@
                     <ul class="list-unstyled">
                         <li> <a href="#"> Background </a></li>
                         <li> <a href="#"> About us </a></li>
-                        <li> <a href="#"> Major beneficiaries </a></li>
                     </ul>
                 </aside>
                 <aside class="col-sm-3">
                     <article class="white">
                         <h5 class="title">Contacts</h5>
                         <p>
-                          <strong>Mobile Phone: </strong> +263 77 227 4384;
+                          <strong>Mobile Phone: </strong> xxxxxxx;
                             <br>
-                            <strong> </strong> +263775 574 702 
+                            <strong> </strong> xxxxxx 
                             <br>
-                            <strong>Email:</strong> sia@zol.co.zw
+                            <strong>Email:</strong> cri@drss.gov.zw
                             <br> 
-                            <strong>Website:</strong> www.agrovet.com
+                            <strong>Website:</strong> <a href="drss.gov.zw/index.php/library/eligible-members-and-application-form/cotton-research">Cotton Research Institute</a>
                         </p>
 
                         <div class="btn-group white">
@@ -62,7 +60,7 @@
         <section class="footer-bottom row border-top-white">
             <div class="col-sm-6">
                 <p class="text-white-50"> Version 1 By
-                    < <br> Justice Mashunye.</p>
+                    < <br> Developed for CRI by the DRSS ICT Unit.</p>
             </div>
             <div class="col-sm-6">
                 <p class="text-md-right text-white-50">

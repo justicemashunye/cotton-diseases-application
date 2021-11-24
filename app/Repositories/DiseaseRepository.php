@@ -10,41 +10,22 @@ use Illuminate\Database\QueryException;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Doctrine\Instantiator\Exception\InvalidArgumentException;
 
-/**
- * Class CategoryRepository
- *
- * @package \App\Repositories
- */
 class DiseaseRepository extends BaseRepository implements DiseaseContract
 {
     use UploadAble;
 
-    /**
-     * CategoryRepository constructor.
-     * @param Disease $model
-     */
     public function __construct(Disease $model)
     {
         parent::__construct($model);
         $this->model = $model;
     }
 
-    /**
-     * @param string $order
-     * @param string $sort
-     * @param array $columns
-     * @return mixed
-     */
+    
     public function listDiseases(string $order = 'id', string $sort = 'desc', array $columns = ['*'])
     {
         return $this->all($columns, $order, $sort);
     }
 
-    /**
-     * @param int $id
-     * @return mixed
-     * @throws ModelNotFoundException
-     */
     public function findDiseaseById(int $id)
     {
         try {
@@ -57,10 +38,7 @@ class DiseaseRepository extends BaseRepository implements DiseaseContract
 
     }
 
-    /**
-     * @param array $params
-     * @return Disease|mixed
-     */
+   
     public function createDisease(array $params)
     {
         try {
@@ -85,10 +63,7 @@ class DiseaseRepository extends BaseRepository implements DiseaseContract
         }
     }
 
-    /**
-     * @param array $params
-     * @return mixed
-     */
+    
     public function updateDisease(array $params)
     {
         $disease = $this->findDiseaseById($params['id']);
@@ -111,10 +86,7 @@ class DiseaseRepository extends BaseRepository implements DiseaseContract
         return $disease;
     }
 
-    /**
-     * @param $id
-     * @return bool|mixed
-     */
+    
     public function deleteDisease($id)
     {
         $disease = $this->findDiseaseById($id);

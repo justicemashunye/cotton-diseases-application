@@ -56,7 +56,7 @@ Route::group(['middleware' => ['auth:admin']], function () {
 
     Route::group(['prefix'  =>   'colors'], function() {
 
-        Route::get('/', 'Admin\ColorController@index')->name('admin.colors.index');
+        Route::get('/admin', 'Admin\ColorController@index')->name('admin.colors.index');
         Route::get('/create', 'Admin\ColorController@create')->name('admin.colors.create');
         Route::post('/store', 'Admin\ColorController@store')->name('admin.colors.store');
         Route::get('/{id}/edit', 'Admin\ColorController@edit')->name('admin.colors.edit');
@@ -76,9 +76,9 @@ Route::group(['middleware' => ['auth:admin']], function () {
     
     });
 
-    Route::group(['prefix'  =>   'diseases'], function() {
+    Route::group(['prefix'  =>   'disease'], function() {
 
-        Route::get('/', 'Admin\DiseaseController@index')->name('admin.diseases.index');
+        Route::get('/', 'Admin\DiseaseController@index')->name('admin.disease.index');
         Route::get('/create', 'Admin\DiseaseController@create')->name('admin.diseases.create');
         Route::post('/store', 'Admin\DiseaseController@store')->name('admin.diseases.store');
         Route::get('/{id}/edit', 'Admin\DiseaseController@edit')->name('admin.diseases.edit');
@@ -87,10 +87,16 @@ Route::group(['middleware' => ['auth:admin']], function () {
     
     });
 
+    Route::group(['prefix'  =>   'disease-details'], function() {
 
-
-
-
+        Route::get('/', 'Admin\DiseaseDetailController@index')->name('admin.disease-details.index');
+        Route::get('/create', 'Admin\DiseaseDetailController@create')->name('admin.disease-details.create');
+        Route::post('/store', 'Admin\DiseaseDetailController@store')->name('admin.disease-details.store');
+        Route::get('/{id}/edit', 'Admin\DiseaseDetailController@edit')->name('admin.disease-details.edit');
+        Route::post('/update', 'Admin\DiseaseDetailController@update')->name('admin.disease-details.update');
+        Route::get('/{id}/delete', 'Admin\DiseaseDetailController@delete')->name('admin.disease-details.delete');
+    
+    });
 
 });
 });

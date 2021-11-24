@@ -17,11 +17,11 @@
                           <tbody>
                   @forelse ($shapes as $shape)
                       <tr>
-                        {{$shape->shape_id}}
+                        <td><a href="{{ route('site.colors', $shape->shape_id) }}" >{{$shape->shape->description}}</a></td>
                       </tr>
                   @empty
                   <div>
-                      <p>You have no shapes yet</p>
+                      <p>Disease of this shape not found</p>
                   </div>
                   @endforelse
                   </tbody>

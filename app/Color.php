@@ -1,6 +1,7 @@
 <?php
 
 namespace App;
+use App\Disease;
 
 use Illuminate\Database\Eloquent\Model;
 
@@ -12,9 +13,9 @@ class Color extends Model
    
     protected $fillable = ['name','image'];
 
-    public function shapes()
+    public function diseases()
     {
-        return $this->belongsToMany('App\Shape');
+        return $this->hasMany(Disease::class);
     }
 
 }

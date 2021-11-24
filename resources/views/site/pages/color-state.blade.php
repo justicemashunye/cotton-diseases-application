@@ -15,15 +15,14 @@
                               </tr>
                           </thead>
                           <tbody>
-                  @forelse ($colorstates as $colorstate)
-                      <tr>
-                          <td><a href="{{ route('site.disease', $colorstate->id) }}" >{{$colorstate->description}}</a></td>
-                      </tr>
-                  @empty
-                  <div>
-                      <p>You have no color state yet</p>
-                  </div>
-                  @endforelse
+                    @forelse ($colorstates as $colorstate)
+                        <tr>
+                        <td><a href="{{ route('site.diseases', $colorstate->color_state_id) }}" >{{$colorstate->colorstate->description}}</a></td></a></td>
+                     @empty
+                        <div>
+                            <p>No disease found,please go <a href="{{ route('home')}}"> back </a>and try again</p>
+                        </div>
+                    @endforelse
                   </tbody>
               </table>
               </div>

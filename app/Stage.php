@@ -25,26 +25,14 @@ class Stage extends Model
         $this->attributes['slug'] = Str::slug($value);
     }
 
-    public function parent()
-    {
-        return $this->belongsTo(Stage::class, 'parent_id');
-    }
-    public function children()
-    {
-        return $this->hasMany(Stage::class, 'parent_id');
-    }
-
-    /*
-    public function locations()
-    {
-        return $this->belongsToMany('App\Location');
-    }
-    */
-
     public function locations()
     {
         return $this->hasMany(Location::class);
     }
-   
+    
+    public function diseases()
+    {
+        return $this->hasMany(Disease::class);
+    }
 }
 

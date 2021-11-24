@@ -11,13 +11,15 @@
               <table class="table table-hover table-bordered" id="sampleTable">
                           <thead>
                               <tr>
-                                <th> Name </th>
+                                <th> Name of Stage</th>
+                                <th>Similar Image </th>
                               </tr>
                           </thead>
                           <tbody>
                   @forelse ($stages as $stage)
                       <tr>
                         <td><a href="{{ route('site.locations', $stage->id) }}" >{{$stage->name}}</a></td>
+                        <td><a href="{{ route('site.locations', $stage->id) }}" ><img class="rounded" src="{{ asset('storage/'.$stage->image) }}" alt="{{<?php echo $stage->name;?>}}" style="width: 200px; height: auto;" ></a>
                       </tr>
                   @empty
                   <div>

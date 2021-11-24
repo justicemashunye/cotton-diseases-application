@@ -6,20 +6,13 @@ use Illuminate\Support\Facades\Schema;
 
 class CreateDiseasesTable extends Migration
 {
-    /**
-     * Run the migrations.
-     *
-     * @return void
-     */
+  
     public function up()
     {
         Schema::create('diseases', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
-            $table->string('description')->nullable();
-            $table->string('symptoms');
-            $table->string('mode_of_transmission');
-            $table->string('control');
+            $table->unsignedBigInteger('disease_detail_id')->nullable();
+            $table->foreign('disease_detail_id')->references('id')->on('disease_details');
             $table->unsignedBigInteger('stage_id')->nullable();
             $table->foreign('stage_id')->references('id')->on('stages');
             $table->unsignedBigInteger('location_id')->nullable();
@@ -30,16 +23,13 @@ class CreateDiseasesTable extends Migration
             $table->foreign('color_id')->references('id')->on('colors');
             $table->unsignedBigInteger('color_state_id')->nullable();
             $table->foreign('color_state_id')->references('id')->on('color_states');
-            $table->string('user_id');
+            $table->unsignedBigInteger('user_id');
+            $table->foreign('user_id')->references('id')->on('admins');
             $table->timestamps();
         });
     }
 
-    /**
-     * Reverse the migrations.
-     *
-     * @return void
-     */
+   
     public function down()
     {
         Schema::dropIfExists('diseases');

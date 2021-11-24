@@ -8,11 +8,7 @@ use Illuminate\Support\ServiceProvider;
 
 class ViewComposerServiceProvider extends ServiceProvider
 {
-    /**
-     * Bootstrap services.
-     *
-     * @return void
-     */
+    
     public function boot()
     {
         View::composer('site.pages.homepage', function ($view) {

@@ -13,9 +13,15 @@
             </a>
         </li>
         <li>
-            <a class="app-menu__item {{ Route::currentRouteName() == 'admin.diseases.index' ? 'active' : '' }}" href="{{ route('admin.diseases.index') }}">
+            <a class="app-menu__item {{ Route::currentRouteName() == 'admin.diseases.index' ? 'active' : '' }}" href="{{ route('admin.disease.index') }}">
                 <i class="app-menu__icon fa fa-bar-chart"></i>
                 <span class="app-menu__label">Diseases</span>
+            </a>
+        </li>
+        <li>
+            <a class="app-menu__item {{ Route::currentRouteName() == 'admin.disease-details.index' ? 'active' : '' }}" href="{{ route('admin.disease-details.index') }}">
+                <i class="app-menu__icon fa fa-briefcase"></i>
+                <span class="app-menu__label">Disease Details</span>
             </a>
         </li>
         <li>
